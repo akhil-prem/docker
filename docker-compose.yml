@@ -1,0 +1,35 @@
+name: "nodeapp"
+
+services:
+  node-app:
+    image: akhilprem/test-repo:1.0
+    container_name: node-app
+    environment:
+      - MONGO_URL=mongodb://mongo-db # mongo db container name
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    networks:
+      - mongo-network
+
+  mongo-db:
+    image: mongo
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    networks:
+      - mongo-network
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo-db
+    ports:
+      - "8081:8081"
+    networks:
+      - mongo-network
+
+networks:
+  mongo-network:
+    driver: bridge
