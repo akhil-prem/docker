@@ -1,6 +1,5 @@
 node_modules
 .git
-Dockerfile
 .dockerignore
 logs
 *.log
