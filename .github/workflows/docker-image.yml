@@ -8,6 +8,7 @@ on:
 jobs:
   build_and_push_to_docker_hub:
     runs-on: ubuntu-latest
+    environment: development  # Specify the git hub environment
 
     steps:
       - name: Checkout code
@@ -22,6 +23,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: . # Specify Dockerfile path
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/your-repo-name:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/test-repo:1.0
