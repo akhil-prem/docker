@@ -7,6 +7,8 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true" # Tells Watchtower to monitor this container for updates
     environment:
+      - DOCKER_USERNAME=${DOCKER_USERNAME}
+      - DOCKER_PASSWORD=${DOCKER_ACCESS_TOKEN}
       - MONGO_URL=mongodb://mongo-db # mongo db container name
       - PORT=3000
     ports:
