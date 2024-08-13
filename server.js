@@ -18,6 +18,7 @@ mongoose
     const userSchema = new Schema({
       name: String,
       email: String,
+      number: String,
     });
 
     const User = mongoose.model("User", userSchema);
@@ -26,6 +27,7 @@ mongoose
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
+        number: req.body.number,
       });
 
       newUser
